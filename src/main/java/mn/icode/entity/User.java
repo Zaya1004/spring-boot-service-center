@@ -30,6 +30,8 @@ public class User {
 	
 	@Column(nullable = false)
 	private boolean enable = true;
+	
+	public User() {}
 
 	public Long getId() {
 		return id;

@@ -15,6 +15,8 @@ public class ServiceCategory {
 	
 	@Column(nullable = false)
 	private String description;
+	
+	public ServiceCategory() {}
 
 	public Long getId() {
 		return id;

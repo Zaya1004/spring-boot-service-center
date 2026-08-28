@@ -27,9 +27,10 @@ public class Service {
 	@Column(nullable = false)
 	private boolean active = true;
 	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long category_id;
+	@Column(name = "category_id", nullable = false)
+	private Long categoryId;
+		
+	public Service() {}
 
 	public Long getId() {
 		return id;
@@ -79,11 +80,13 @@ public class Service {
 		this.active = active;
 	}
 
-	public Long getCategory_id() {
-		return category_id;
+	public Long getCategoryId() {
+		return categoryId;
 	}
 
-	public void setCategory_id(Long category_id) {
-		this.category_id = category_id;
+	public void setCategoryId(Long categoryId) {
+		this.categoryId = categoryId;
 	}
+
+
 }

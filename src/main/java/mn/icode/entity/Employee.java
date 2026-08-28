@@ -20,6 +20,8 @@ public class Employee {
 	
 	@Column(nullable = false)
 	private boolean active = true;
+	
+	public Employee() {}
 
 	public Long getId() {
 		return id;
