@@ -1,5 +1,6 @@
 package mn.icode.entity;
 
+
 import jakarta.persistence.*;
 
 @Entity
@@ -25,8 +26,9 @@ public class User {
 	@Column(nullable = false)
 	private String phone;
 	
-	@Column(nullable = false)
-	private String role;
+	@Enumerated(EnumType.STRING)
+	@Column(nullable = false, length = 20)
+	private mn.icode.model.Role role;
 	
 	@Column(nullable = false)
 	private boolean enable = true;
@@ -81,11 +83,12 @@ public class User {
 		this.phone = phone;
 	}
 
-	public String getRole() {
+
+	public mn.icode.model.Role getRole() {
 		return role;
 	}
 
-	public void setRole(String role) {
+	public void setRole(mn.icode.model.Role role) {
 		this.role = role;
 	}
 
