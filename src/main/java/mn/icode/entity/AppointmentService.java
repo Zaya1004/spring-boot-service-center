@@ -14,14 +14,42 @@ public class AppointmentService {
 	
 	@ManyToOne
 	@JoinColumn(name = "appointment_id", nullable = false)
-	private Appointment appointmentId;
+	private Appointment appointment;
 	
 	@ManyToOne
 	@JoinColumn(name = "service_id", nullable = false)
-	private Service serviceId;
+	private Service service;
 	
+	@Column(name = "service_name", nullable = false)
+	private String serviceName;
+	
+	public Appointment getAppointment() {
+		return appointment;
+	}
+
+	public void setAppointment(Appointment appointment) {
+		this.appointment = appointment;
+	}
+
+	public Service getService() {
+		return service;
+	}
+
+	public void setService(Service service) {
+		this.service = service;
+	}
+
+	public String getServiceName() {
+		return serviceName;
+	}
+
+	public void setServiceName(String serviceName) {
+		this.serviceName = serviceName;
+	}
+
 	@Column(nullable = false, precision = 12, scale = 2)
 	private BigDecimal price;
+	
 	
 	public AppointmentService() {}
 
@@ -34,19 +62,19 @@ public class AppointmentService {
 	}
 
 	public Appointment getAppointmentId() {
-		return appointmentId;
+		return appointment;
 	}
 
 	public void setAppointmentId(Appointment appointmentId) {
-		this.appointmentId = appointmentId;
+		this.appointment = appointmentId;
 	}
 
 	public Service getServiceId() {
-		return serviceId;
+		return service;
 	}
 
 	public void setServiceId(Service serviceId) {
-		this.serviceId = serviceId;
+		this.service = serviceId;
 	}
 
 	public BigDecimal getPrice() {

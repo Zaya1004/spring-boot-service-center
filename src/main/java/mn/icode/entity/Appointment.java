@@ -1,7 +1,11 @@
 package mn.icode.entity;
 
+import java.math.BigDecimal;
 import java.sql.Date;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 import jakarta.persistence.*;
 
@@ -20,13 +24,76 @@ public class Appointment {
 	@JoinColumn(name = "employee_id", nullable = false)
 	private Employee employeeId;
 	
-	@Column(name = "appointmentDate")
+	@Column(name = "appointment_date", nullable = false)
 	private Date appointmentDate;
 	
-	@Column(name = "startTime")
+	@Column(name = "start_time", nullable = false)
 	private LocalDate startTime;
 	
+	@Enumerated(EnumType.STRING)
+	@Column(nullable = false, length = 30)
+	private AppointmentStatus status = AppointmentStatus.Requested;
+	
+	@Column(length = 1000)
+	private String notes;
+	
+	@Column(nullable = false, precision = 12, scale = 2)
+	private BigDecimal totalAmount = BigDecimal.ZERO;
+	
+	@Column(nullable = false)
+	private LocalDateTime createdAt;
+	
+	@OneToMany(mappedBy = "appointment",
+			cascade = CascadeType.ALL,
+			orphanRemoval = true)
+	private List<AppointmentService> appointmentServices = new ArrayList<>();
+	
 	public Appointment() {}
+	
+	@PrePersist
+	protected void onCreate() {
+		createdAt = LocalDateTime.now();
+	}
+
+	public AppointmentStatus getStatus() {
+		return status;
+	}
+
+	public void setStatus(AppointmentStatus status) {
+		this.status = status;
+	}
+
+	public String getNotes() {
+		return notes;
+	}
+
+	public void setNotes(String notes) {
+		this.notes = notes;
+	}
+
+	public BigDecimal getTotalAmount() {
+		return totalAmount;
+	}
+
+	public void setTotalAmount(BigDecimal totalAmount) {
+		this.totalAmount = totalAmount;
+	}
+
+	public LocalDateTime getCreatedAt() {
+		return createdAt;
+	}
+
+	public void setCreatedAt(LocalDateTime createdAt) {
+		this.createdAt = createdAt;
+	}
+
+	public List<AppointmentService> getAppointmentServices() {
+		return appointmentServices;
+	}
+
+	public void setAppointmentServices(List<AppointmentService> appointmentServices) {
+		this.appointmentServices = appointmentServices;
+	}
 
 	public Long getId() {
 		return id;

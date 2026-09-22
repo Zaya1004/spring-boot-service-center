@@ -9,13 +9,13 @@ public class Employee {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@Column(nullable = false)
+	@Column(nullable = false, length = 100)
 	private String firstName;
 	
-	@Column(nullable = false)
+	@Column(nullable = false, length = 100)
 	private String lastName;
 	
-	@Column
+	@Column(length = 200)
 	private String specialization;
 	
 	@Column(nullable = false)

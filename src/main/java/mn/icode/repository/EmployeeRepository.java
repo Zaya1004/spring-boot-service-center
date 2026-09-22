@@ -6,4 +6,6 @@ import mn.icode.entity.Employee;
 
 public interface EmployeeRepository extends JpaRepository<Employee, Long>{
 
+	Employee updateEmployee(Long id, Employee employee);
+
 }

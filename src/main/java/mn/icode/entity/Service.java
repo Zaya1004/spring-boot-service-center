@@ -12,21 +12,22 @@ public class Service {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@Column(nullable = false)
+	@Column(nullable = false, length = 150)
 	private String name;
 	
-	@Column(nullable = false)
+	@Column(nullable = false, length = 1000)
 	private String description;
 	
 	@Column(nullable = false, precision = 12, scale = 2)
 	private BigDecimal price;
 	
-	@Column(name = "duration_minute" )
+	@Column(name = "duration_minute", nullable = false)
 	private Integer durationMinutes = 0;
 	
 	@Column(nullable = false)
 	private boolean active = true;
 	
+	@ManyToOne
 	@Column(name = "category_id", nullable = false)
 	private Long categoryId;
 		
